@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 .cartnavbar{
-  background-color: var(--color-tint);
+  background-color:#FF627B;
   color:white;
   font-size: 18px
 }

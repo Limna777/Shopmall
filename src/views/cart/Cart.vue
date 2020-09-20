@@ -11,12 +11,15 @@
     >
     <cart-list></cart-list>
     </scroll>
+    <!-- 底部导航 -->
+    <cart-bottom-bar></cart-bottom-bar>
   </div>
 </template>
 
 <script>
 import CartNavBar from '@/views/cart/childComps/CartNavBar'
 import CartList from '@/views/cart/childComps/CartList'
+import cartBottomBar from '@/views/cart/childComps/cartBottomBar'
 
 import Scroll from '@/components/common/scroll/Scroll'
 
@@ -26,7 +29,8 @@ import Scroll from '@/components/common/scroll/Scroll'
     components:{
       CartNavBar,
       CartList,
-      Scroll
+      Scroll,
+      cartBottomBar
     },
     activated() {
       //每次进入购物车页面就重新计算一下高度
