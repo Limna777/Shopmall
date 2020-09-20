@@ -12,7 +12,7 @@
       <detail-param-info :paramInfo="paramInfo"></detail-param-info>
     </scroll>
     <back-top @click.native="topClick" v-show="isShow"></back-top>
-    <detail-bottom-bar @addGoods="addToGoods"></detail-bottom-bar>
+    <detail-bottom-bar ref="detailShoppingCart" @addGoods="addToGoods"></detail-bottom-bar>
   </div>
 </template>
 
@@ -92,14 +92,18 @@ export default {
     },
     addToGoods(){
       //1、获取
-      // console.log(this.res);
+      console.log(this.res);
       const product = {}
       product.image = this.topImages[0]
-      product.title = this.title
-      product.price = this.goods.newPrice
+      product.name = this.shop.name
       product.desc = this.goods.desc
       product.iid = this.iid
-
+      product.lowNowPrice = this.goods.lowNowPrice
+      /* product.currentCounts = this.$refs.detailShoppingCart.currentCounts;
+      product.realPrice = this.$refs.detailShoppingCart.nowPrice;
+      product.productStyleMsg = this.$refs.detailShoppingCart.productStyleMsg;
+      product.productSizeMsg = this.$refs.detailShoppingCart.productSizeMsg;
+ */
       //2放到购物车里，利用vuex
       this.$store.dispatch('addCart',product)
 

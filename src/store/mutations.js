@@ -7,6 +7,7 @@ export default {
   },
   //添加不同的商品进入购物车列表
   [ADD_TO_CART](state, payload) {
+    payload.checked = true
     state.cartList.push(payload);
   }
 };
