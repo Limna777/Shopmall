@@ -27,8 +27,11 @@ import DetailBottomBar from '@/views/details/childComps/DetailBottomBar'
 
 import BackTop from '@/components/content/backTop/BackTop'
 import Scroll from '@/components/common/scroll/Scroll'
+import Toast from '@/components/common/toast/Toast'
 
 import {getDetail , Goods , Shop , GoodsParam} from 'network/detail'
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Detail',
   data(){
@@ -53,6 +56,7 @@ export default {
     DetailBaseInfo,
     Scroll,
     BackTop,
+    Toast,
     DetailShopInfo,
     DetailGoodsInfo,
     DetailParamInfo,
@@ -65,6 +69,7 @@ export default {
     this.getDetail()
   },
   methods: {
+    ...mapActions(['addCart']),
     getDetail(){
       getDetail(this.iid).then(res=>{
         console.log(res);
@@ -99,14 +104,14 @@ export default {
       product.desc = this.goods.desc
       product.iid = this.iid
       product.lowNowPrice = this.goods.lowNowPrice
-      /* product.currentCounts = this.$refs.detailShoppingCart.currentCounts;
-      product.realPrice = this.$refs.detailShoppingCart.nowPrice;
-      product.productStyleMsg = this.$refs.detailShoppingCart.productStyleMsg;
-      product.productSizeMsg = this.$refs.detailShoppingCart.productSizeMsg;
- */
-      //2放到购物车里，利用vuex
-      this.$store.dispatch('addCart',product)
+     
 
+      //2放到购物车里，利用vuex
+      this.addCart(product).then(res =>{
+        console.log(res);
+        console.log(this.$toast.showToast);
+        this.$toast.showToast(res,1000);
+      })
     }
   },
 }

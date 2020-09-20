@@ -1,7 +1,10 @@
 <template>
   <div class="bottom-bar">
-    <div class="check-content">
-      <check-button class="check-button"></check-button>
+    <div class="check-content"  >
+      <check-button class="check-button" 
+      :is-checked="isSelector"
+      @click.native="checkClick"
+      ></check-button>
       <span>全选</span>
     </div>
     <div class="price">
@@ -21,8 +24,21 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'CartBottomBar',
+  data(){
+    return{
+    }
+  },
   components:{
     CheckButton
+  },
+  methods: {
+    checkClick(){
+      if(this.isSelector){
+        this.cartList.forEach(item =>  item.checked = false)
+      }else{
+        this.cartList.forEach(item =>  item.checked = true)
+      }
+    }
   },
   computed: {
     ...mapGetters(['cartList']),
@@ -35,7 +51,9 @@ export default {
     },
     caculate(){
       return this.cartList.filter(item => item.checked).length
-      
+    },
+    isSelector(){
+      return !this.cartList.find(item=>!item.checked)
     }
   },
 }
@@ -45,7 +63,6 @@ export default {
 .bottom-bar{
   height: 40px;
   position: relative;
-  bottom: 40px;
   background-color: rgb(245, 233, 234);
   display: flex;
   line-height: 40px;
@@ -69,5 +86,4 @@ export default {
   color: white;
   background-color: #FF3656;
 }
-
 </style>

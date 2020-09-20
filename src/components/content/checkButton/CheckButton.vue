@@ -29,7 +29,7 @@
   }
   
   .choose{
-    background-color: rgb(228, 62, 90);
+    background-color:#FF3656;
   }
 
 </style>

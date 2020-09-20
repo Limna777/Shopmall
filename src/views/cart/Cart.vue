@@ -52,7 +52,7 @@ import Scroll from '@/components/common/scroll/Scroll'
 }
 .content{
   touch-action: none;
-  height: calc(100vh - 44px - 49px);
+  height: calc(100vh - 44px - 49px - 40px);
   overflow-y: hidden;
 }
 </style>
