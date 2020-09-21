@@ -1,20 +1,20 @@
 <template>
-  <div>
-    <div class="wrap">
-    </div>
+  <div class="category">
+    <nav-bar class="c-navBar">
+      <div slot="center">商品分类</div>
+    </nav-bar>
   </div>
 </template>
 
 <script>
-import Scroll from '@/components/common/scroll/Scroll'
-
+import NavBar from '@/components/common/navbar/NavBar'
   export default {
     name: "Category",
     created(){
       
     },
     components:{
-      Scroll
+      NavBar
     },
     mounted() {
     },
@@ -22,8 +22,9 @@ import Scroll from '@/components/common/scroll/Scroll'
 </script>
 
 <style scoped>
-.wrap{
-  height: 200px;
-  background-color: pink;
+.c-navBar{
+  background-color:var(--color-tint);
+  color: white;
+  font-size: 20px;
 }
 </style>

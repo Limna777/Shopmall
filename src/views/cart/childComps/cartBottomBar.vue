@@ -62,10 +62,14 @@ export default {
 <style scoped>
 .bottom-bar{
   height: 40px;
-  position: relative;
+  position: fixed;
+  bottom: 49px;
+  left: 0;
+  right: 0;
   background-color: rgb(245, 233, 234);
   display: flex;
   line-height: 40px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3)
 }
 .check-content{
   line-height: 20px;
